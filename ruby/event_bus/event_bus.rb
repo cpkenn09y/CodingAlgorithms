@@ -7,26 +7,26 @@ class EventBus
   def emit(event_name, data)
     case event_name
     when "error"
-        @error_callbacks.each do |callback|
-            callback.call(data)
-        end
+      @error_callbacks.each do |callback|
+        callback.call(data)
+      end
     when "success"
-        @success_callbacks.each do |callback|
-            callback.call(data)
-        end
+      @success_callbacks.each do |callback|
+        callback.call(data)
+      end
     else
-        raise "event_bus#emit: invalid event name '#{event_name}'"
+      raise "event_bus#emit: invalid event name '#{event_name}'"
     end
   end
 
   def subscribe(event_name, callback)
     case event_name
     when "success"
-        @success_callbacks << callback
+      @success_callbacks << callback
     when "error"
-        @error_callbacks << callback
+      @error_callbacks << callback
     else
-        raise "event_bus#subscribe: invalid event name '#{event_name}'"
+      raise "event_bus#subscribe: invalid event name '#{event_name}'"
     end
   end
 end
