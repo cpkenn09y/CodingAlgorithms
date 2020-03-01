@@ -1,4 +1,4 @@
-// This solution is only applicable if we are allowed to use an Array
+// This is a reference solution is only applicable if we are allowed to use an Array
 
 /**
  * Initialize your data structure here.
