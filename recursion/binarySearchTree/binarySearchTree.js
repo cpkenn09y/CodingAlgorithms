@@ -16,21 +16,25 @@ function TreeNode(val) {
   this.left = this.right = null;
 }
 
+// PSEUDOCODE for looking for 5
+//     4
+//    / \
+//   2   7
+//  / \
+// 1   3
+// * LOOK at root val of 4
+// * SINCE 4 < 5
+// * LOOK right of root
+// * LOOK AT NODE val of 7
+// * NOT FOUND...
+// * SINCE not found, attempt to look at children...
+// * IF CURRENT_VAL != val && NO CHILDREN... return NULL
 let searchBST = (root, val) => {
-  // PSEUDOCODE for looking for 5
-  //     4
-  //    / \
-  //   2   7
-  //  / \
-  // 1   3
-  // * LOOK at root val of 4
-  // * SINCE 4 < 5
-  // * LOOK right of root
-  // * LOOK AT NODE val of 7
-  // * NOT FOUND...
-  // * SINCE not found, attempt to look at children...
-  // * IF CURRENT_VAL != val && NO CHILDREN... return NULL
-  let helper = (node, val) => {
+  /**
+   * @param {TreeNode} node
+   * @return {TreeNode} or null
+   */
+  let helper = (node) => {
     let matchFound,hasChildren,nextNode
     matchFound = node.val == val
     if (node.left || node.right) {
@@ -55,7 +59,7 @@ let searchBST = (root, val) => {
     else {
       nextNode = node.left
     }
-    return helper(nextNode, val)
+    return helper(nextNode)
   }
   return helper(root, val)
 }
