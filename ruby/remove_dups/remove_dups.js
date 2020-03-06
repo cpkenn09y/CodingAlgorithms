@@ -9,7 +9,6 @@ let removeDuplicates = (nums) => {
   }
   let turtle = 0
   console.log(`Turtle starts at position 0. Hare starts at position 1`)
-  // ["T","H"]
   for (let hare=1; hare<nums.length; hare++) {
     if (nums[hare] != nums[turtle]) {
       turtle++
@@ -19,17 +18,22 @@ let removeDuplicates = (nums) => {
     else {
       console.log(`Turtle(${nums[turtle]}) and Hare(${nums[hare]}) are equivalent. Hare proceeds to position ${hare+1}`)
     }
+    nums[hare] = "_" // make spaces where the hare has been empty
   }
+  console.log(`FINAL ${JSON.stringify(nums)}`)
   return turtle + 1
 }
 
-nums = ["x","x","y"]
+// nums = ["x","x","y"]
 
 // nums is passed in by reference. (i.e., without making a copy)
-let len = removeDuplicates(nums);
+// let len = removeDuplicates(nums);
 
 // any modification to nums in your function would be known by the caller.
 // using the length returned by your function, it prints the first len elements.
-for (let i = 0; i < len; i++) {
-  console.log(nums[i]);
-}
+// for (let i = 0; i < len; i++) {
+//   console.log(nums[i]);
+// }
+nums = [1,1,2,2,3]
+let len = removeDuplicates(nums);
+JSON.stringify(nums) == [1,2,3,"_","_"]
