@@ -16,7 +16,9 @@
 }
 WORKING_WITH_THE_PROBLEM
 
-# TIME TAKEN ~= 60 minutes
+# TIME TAKEN      ~= 60 minutes
+# TIME COMPLEXITY  : N ^ 2?
+# SPACE COMPLEXITY :
 
 def create_domains(split_cp_domain)
   # EXPECTATION:
@@ -45,11 +47,11 @@ def subdomain_visit_count(count_paired_cpdomains)
   #   "discuss.leetcode.com" => 9001
   # }
   visit_counter = {}
-  count_paired_cpdomains.each do |count_paired_cpdomain|
-    count,cp_domain = count_paired_cpdomain.split(" ") # ["9001", discuss.leetcode.com]
-    split_cp_domain = cp_domain.split(".") # ["discuss", "leetcode", "com"]
+  count_paired_cpdomains.each do |count_paired_cpdomain| # "9001 discuss.leetcode.com"
+    count,cp_domain = count_paired_cpdomain.split(" ") # ["9001", discuss.leetcode.com] # 1N
+    split_cp_domain = cp_domain.split(".") # ["discuss", "leetcode", "com"] # 1N
 
-    create_domains(split_cp_domain).each do |domain| # ["com", "leetcode.com", "discuss.leetcode.com"]
+    create_domains(split_cp_domain).each do |domain| # ["com", "leetcode.com", "discuss.leetcode.com"] # 1N
       int_count = count.to_i
       if visit_counter.has_key?(domain)
         visit_counter[domain] = visit_counter[domain] + int_count
@@ -65,8 +67,8 @@ def subdomain_visit_count(count_paired_cpdomains)
 end
 
 p subdomain_visit_count(["9001 discuss.leetcode.com"]) == ["9001 com", "9001 leetcode.com", "9001 discuss.leetcode.com"]
-p subdomain_visit_count(["900 google.mail.com", "50 yahoo.com"]) == ["950 com", "900 mail.com", "900 google.mail.com", "50 yahoo.com"]
-p subdomain_visit_count(["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]) == ["951 com", "901 mail.com", "900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 org", "5 wiki.org"]
+# p subdomain_visit_count(["900 google.mail.com", "50 yahoo.com"]) == ["950 com", "900 mail.com", "900 google.mail.com", "50 yahoo.com"]
+# p subdomain_visit_count(["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]) == ["951 com", "901 mail.com", "900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 org", "5 wiki.org"]
 
 # NOTE: Odd that it's using an array when the order does not seem to matter
 # QUESTION: What is the time complexity of a split...?
