@@ -36,14 +36,14 @@ def is_anagram(s, t)
   s_letter_count == t_letter_count
 end
 
-# s = "anagram"
-# t = "nagaram"
-# puts is_anagram(s,t) == true
+s = "anagram"
+t = "nagaram"
+puts is_anagram(s,t) == true
 
-# s = "rat"
-# t = "car"
-# puts is_anagram(s,t) == false
-<<-PSEUDOCODE
+s = "rat"
+t = "car"
+puts is_anagram(s,t) == false
+<<-WORKING_WITH_THE_DATA
   "anagram"
   * check to see if the number of characters match up
   s_letter_count = {
@@ -54,4 +54,4 @@ end
     m: 1
   }
   * determine of s_letter_count == t_letter_count
-PSEUDOCODE
+WORKING_WITH_THE_DATA

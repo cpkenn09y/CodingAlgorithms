@@ -13,7 +13,8 @@
 # @return {Boolean}
 def is_anagram(s, t)
   def helper(full_string, letter_counter={}, index=0)
-    if index > full_string.length - 1 # 0
+    if index > full_string.length - 1
+      # BASECASE
       return letter_counter
     end
     if letter_counter.has_key?(full_string[index])
@@ -24,6 +25,7 @@ def is_anagram(s, t)
     index += 1
     return helper(full_string, letter_counter,index)
   end
+
   if s.length != t.length
     return false
   end
@@ -43,18 +45,18 @@ end
   * determine of s_letter_count == t_letter_count
 PSEUDOCODE
 
-# s = "anagram"
-# t = "nagaram"
-# puts is_anagram(s,t) == true
+s = "anagram"
+t = "nagaram"
+puts is_anagram(s,t) == true
 
-# s = "rat"
-# t = "car"
-# puts is_anagram(s,t) == false
+s = "rat"
+t = "car"
+puts is_anagram(s,t) == false
 
-# s = "aa"
-# t = "longstring"
-# puts is_anagram(s,t) == false
+s = "aa"
+t = "longstring"
+puts is_anagram(s,t) == false
 
-# s = "a"
-# t = "b"
-# puts is_anagram(s,t) == false
+s = "a"
+t = "b"
+puts is_anagram(s,t) == false
