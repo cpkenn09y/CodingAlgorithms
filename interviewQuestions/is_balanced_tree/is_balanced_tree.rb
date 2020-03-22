@@ -15,25 +15,9 @@ class TreeNode
     @left, @right = nil, nil
   end
 
-  # def has_both_children?
-  #   result = false
-  #   if @left && @right
-  #     result = true
-  #   end
-  #   result
-  # end
-
   def has_both_children?
     (@left && @right) ? true : false
   end
-
-  # def is_single?
-  #   result = true
-  #   if @left || @right
-  #     result = false
-  #   end
-  #   result
-  # end
 
   def is_single?
     (@left || @right) ? false : true
