@@ -32,36 +32,6 @@ class TreeNode
   end
 end
 
-
-# @param {TreeNode} root
-# @return {Boolean}
-# def is_valid_bst(root)
-#   def helper(node)
-#     if node == nil || node.is_single?
-#       return true
-#     end
-
-#     if node.has_acceptable_children?
-#       puts "Whoo hoo valid children... #{node.val}. Left #{node.left.val}. Right #{node.right.val}"
-#       helper(node.left) && helper(node.right)
-#     else
-#       puts "Found a node with invalid children... #{node.val}. Left #{node.left.val}. Right #{node.right.val}"
-#       return false
-#     end
-#   end
-
-#   if root.is_single?
-#     puts "root is single!"
-#     return true
-#   end
-#   if root.has_acceptable_children?
-#     return helper(root.left) && helper(root.right)
-#   else
-#     puts "root does not have acceptable children"
-#     return false
-#   end
-# end
-
 def is_valid_bst(root)
   def helper(node)
     if node == nil || node.is_single?
