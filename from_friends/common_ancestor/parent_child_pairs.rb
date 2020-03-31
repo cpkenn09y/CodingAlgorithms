@@ -1,6 +1,6 @@
 <<-METRICS
   Start Time = 10:35pm
-  Time Complexity  = O(n^2) where n is the number of touples in the parent_child_pairs Array.
+  Time Complexity  = O(2^n) where n is the number of touples in the parent_child_pairs Array.
                       In a worst case scenario, we create two Node objects for each touple and recursively call all children to update their ancestors.
   Space Complexity = O(n) where n is the number of touples in the parent_child_pairs Array.
                       We have to recursively invoke the tell_children! function on each child;
@@ -20,7 +20,7 @@ require 'pry'
 
 class Node
 
-  @@nodes = {}
+  @@nodes = {} # { 1: <Node> }
 
   attr_reader :val, :ancestors, :children
 
@@ -69,7 +69,7 @@ class Node
   end
 
   def add_parent!(node)
-    @ancestors = (@ancestors + node.ancestors).push(node.val.to_s)
+    @ancestors = (@ancestors + node.ancestors).push(node.val.to_s) # [] + [1] + [2] #=> [1,2]
     @parents << node.val.to_s
     # puts "#{self.val}... adding parent #{node.val}"
     tell_children!
