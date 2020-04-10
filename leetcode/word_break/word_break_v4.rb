@@ -16,14 +16,22 @@ def word_break(s,word_dict)
     return current_str.slice(current_match.length,current_str.length-current_match.length)
   end
 
-  def helper(current_string, word_dict)
+  def helper(current_string, masterlist) # "cars"
     if current_string.length == 0
       # puts "SUCCESSFULLY REDUCED!"
       return true
     end
-    word_dict.each do |word|
+    if masterlist[current_string]
+      # {
+      #   "car" => true,
+      #   "ca" => true,
+      #   "rs" => true
+      # }
+      return true
+    end
+    masterlist.each do |word, value| #
       # puts "ITERATION with #{word}"
-      if current_string[0] == word[0]
+      if current_string[0] == word[0] # "cars" .vs. "car"
         # puts "MATCHED #{current_string} and #{word}"
         result = attempt_string_reduction(current_string,word)
         # puts "string reduced from #{current_string} to #{result}"
@@ -31,12 +39,16 @@ def word_break(s,word_dict)
           # puts "NOT A MATCH..."
           next
         end
-        return true if helper(result, word_dict)
+        return true if helper(result, masterlist) # "s"
       end
     end
     return false
   end
-  helper(s,word_dict)
+  masterlist = {}
+  word_dict.each do |word|
+    masterlist[word] = true
+  end
+  helper(s,masterlist)
 end
 
 # s = "leetcode"
@@ -54,3 +66,8 @@ end
 # s = "cars"
 # wordDict = ["car","ca","rs"]
 # p word_break(s,wordDict) == true
+
+
+"aaaaaaaaaaaaaaaaab"
+
+"a"
