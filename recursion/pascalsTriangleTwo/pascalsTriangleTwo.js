@@ -27,8 +27,7 @@ let getRow = (rowIndex) => {
   if (rowIndex === 1) {
     return [1,1]
   }
-  let previousComputation
-  previousComputation = getRow(rowIndex-1)
+  let previousComputation = getRow(rowIndex-1)
   return computeCurrentRow(previousComputation)
 }
 
@@ -51,10 +50,10 @@ let areEqualArrays = (a1,a2) => {
 //         ] // [1,3,3,1]
 
 // FINDING THE BASECASE
-// console.log(areEqualArrays(getRow(0),[1]))
-// console.log(areEqualArrays(getRow(1),[1,1]))
+console.log(areEqualArrays(getRow(0),[1]))
+console.log(areEqualArrays(getRow(1),[1,1]))
 
 // // SOLVING THE OTHER CASES:
-// console.log(areEqualArrays(getRow(2),[1,2,1]))
-// console.log(areEqualArrays(getRow(3),[1,3,3,1]))
-// console.log(areEqualArrays(getRow(4),[1,4,6,4,1]))
+console.log(areEqualArrays(getRow(2),[1,2,1]))
+console.log(areEqualArrays(getRow(3),[1,3,3,1]))
+console.log(areEqualArrays(getRow(4),[1,4,6,4,1]))
