@@ -1,0 +1,21 @@
+ACCOUNTS
+ id      | integer | not null default nextval('accounts_id_seq'::regclass) | plain    |              |
+ user_id | text    | not null                                              | extended |              |
+ type    | text    | not null                                              | extended |              |
+
+FORECASTS
+ id             | integer                     | not null default nextval('forecasts_id_seq'::regclass) | plain   |              |
+ transaction_id | integer                     | not null                                               | plain   |              |
+ forecasted_at  | timestamp without time zone | not null                                               | plain   |              |
+ model_version  | integer                     | not null                                               | plain   |              |
+ amount         | money                       | not null                                               | plain   |              |
+ date           | date                        | not null                                               | plain   |              |
+
+TRANSACTIONS
+ id          | integer | not null default nextval('transactions_id_seq'::regclass) | plain    |              |
+ series      | text    | not null                                                  | extended |              |
+ account_id  | integer | not null                                                  | plain    |              |
+ type        | text    | not null                                                  | extended |              |
+ description | text    | not null                                                  | extended |              |
+ amount      | money   | not null                                                  | plain    |              |
+ date        | date    | not null                                                  | plain    |              |

@@ -1,0 +1,42 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+  const showBook = (e) => {
+    e.preventDefault()
+    const isbn = $("input#isbn").val()
+    const url = `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json`
+    $.ajax({
+      url: url,
+      type: "GET",
+      success: function(result) {
+        console.log("success", result)
+        console.log(result)
+        const infoUrl = result[`ISBN:${isbn}`]["info_url"]
+        const splitInfoUrl = infoUrl.split("/")
+        $("img#book_cover")[0].src = result[`ISBN:${isbn}`]["thumbnail_url"]
+        $("h1#title").text(splitInfoUrl[splitInfoUrl.length-1])
+      },
+      error: function(error) {
+        console.log(error)
+      }
+    })
+  }
+  $(document).ready(function() {
+    $("input#submit").on("click", showBook)
+  })
+</script>
+<style type="text/css">
+</style>
+
+<body>
+  <h1 id="title">DEFAULT</h1>
+  <img id="book_cover" src="">
+  <form>
+    <label for="fname">Input ISBN (eg. 9780545010221)</label><br>
+    <input id="isbn" type="text" default="9780545010221">
+    <input id="submit" type="submit">
+  </form>
+</body>
+
+
