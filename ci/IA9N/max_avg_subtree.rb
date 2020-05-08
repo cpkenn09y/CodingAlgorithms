@@ -7,47 +7,64 @@
       /   \
     -5     11
     / \   /  \
-    0   2 4    -2
+   0   2 4   -2
     return the node 11.
 DESCRIPTION
 
 class TreeNode
 
-    attr_accessor :val, :left, :right
-    def initialize(val)
-        @val = val
-        @left = nil
-        @right = nil
-    end
+  attr_accessor :val, :left, :right
+  def initialize(val)
+      @val = val
+      @left = nil
+      @right = nil
+  end
+
 end
 
 def find_subtree_with_max_average(root)
   @max_tree_node = nil
   @max_avg = -Float::INFINITY
-  def helper(node, value_to_node={}, average_at_given_point={})
+  def helper(node)
     return { sum: 0, number_of_elements: 0} if node == nil
-    value_to_node[node.val] = node
     left_result = helper(node.left)
     right_result = helper(node.right)
     sum = left_result[:sum] + right_result[:sum] + node.val
     number_of_elements = left_result[:number_of_elements] + right_result[:number_of_elements] + 1
-    average = sum / number_of_elements
-    average_at_given_point[node.val] = average
+    average = sum / number_of_elements.to_f
     if average > @max_avg
       @max_avg = average
       @max_tree_node = node
     end
+    puts "#{node.val} -> #{{ sum: sum, number_of_elements: number_of_elements}}... AVG #{average}"
     return { sum: sum, number_of_elements: number_of_elements}
   end
   helper(root)
   return @max_tree_node
 end
 
-n0 = TreeNode.new(-5)
-n1 = TreeNode.new(0)
-n2 = TreeNode.new(2)
+# n0 = TreeNode.new(-5)
+# n1 = TreeNode.new(0)
+# n2 = TreeNode.new(2)
+# n0.left = n1
+# n0.right = n2
+
+# p find_subtree_with_max_average(n0) == n2
+
+
+n0 = TreeNode.new(1)
+n1 = TreeNode.new(-5)
+n2 = TreeNode.new(11)
+n3 = TreeNode.new(0)
+n4 = TreeNode.new(2)
+n5 = TreeNode.new(4)
+n6 = TreeNode.new(-2)
 n0.left = n1
 n0.right = n2
+n1.left = n3
+n1.right = n4
+n2.left = n5
+n2.right = n6
 
 p find_subtree_with_max_average(n0) == n2
 
