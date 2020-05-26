@@ -1,9 +1,18 @@
+<<-STRATEGY
+  create an adjacency list (eg. 2d array)
+  create a visited array (eg. length of 5)
+  iterate over the adjacency list
+    - do a DFS to identify all interconnected nodes
+    - recursively visit all neighbors
+    - increment a counter (number of components)
+STRATEGY
+
 def dfs(i,neighbors,visited,adjacency_list)
   if visited[i]
     # do nothing
   else
     puts "BEGINNING A NEW DFS at #{i}... HERE IS THE VISITED #{visited}"
-    @counter += 1
+    @counter += 1 #
     visit_node_and_neighbors(i,neighbors,visited,adjacency_list)
   end
 end

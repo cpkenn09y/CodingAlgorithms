@@ -24,9 +24,9 @@ class ComponentCounter
     @adjacency_list = Array.new(@n) { Array.new }
     # populate adjacency list
     @edges.each_with_index do |edge,i|
-      v1,v2 = edge
-      @adjacency_list[v1] << v2
-      @adjacency_list[v2] << v1
+      p1,p2 = edge
+      @adjacency_list[p1] << p2
+      @adjacency_list[p2] << p1
     end
     return @adjacency_list
   end
