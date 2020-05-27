@@ -1,6 +1,5 @@
 <<-NOTES
-  My initial implementation. Uses a weight score to help with the sorting...
-   This solution may be a bit atypical
+  Going to use the #sort_by comparator
 NOTES
 
 class Item
@@ -28,9 +27,9 @@ def sort_by_popularity(list)
     items << Item.new(title: title, popularity: popularity, price: price)
   end
   items.sort_by! do |item|
-    sort_score = (item.popularity * POPULARITY_WEIGHT - item.price * PRICE_WEIGHT) * -1
-    puts "#{item.title} #{sort_score}"
-    sort_score
+    # Primary Sort  : by popularity DESC
+    # Secondary Sort: by price ASC
+    [-item.popularity,item.price]
   end
   items.each do |item|
     puts item.title
