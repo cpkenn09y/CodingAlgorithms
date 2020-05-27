@@ -7,7 +7,7 @@ def add_to_pts_counter(pts_counter, vote, num)
   return pts_counter[vote]
 end
 
-def determine_winner(votes)
+def determine_winner_weighted(votes)
   pts_counter = {}
   max_count = 0
   winners = []
@@ -45,18 +45,11 @@ votes = [
   ["A","B","C"],
   ["B"]
 ]
-p determine_winner(votes) == ["B"]
+p determine_winner_weighted(votes) == ["B"]
 
 
 
 
-# puts determine_winner(["A", "B", "C", "B", "C", "D", "C", "D"]) == "C"
-
-# result =  determine_winner(["A", "B", "C", "B", "C", "D", "C", "D", "D"])
-
-# puts result.length == 2
-# puts result.include?("C")
-# puts result.include?("D")
 
 # puts result == ["C","D"]
 
@@ -64,27 +57,35 @@ p determine_winner(votes) == ["B"]
 # [_] TODO: Users cannot vote for the same candidate more than once
 
 
-# def determine_winner(votes)
-#   counter = {}
-#   max_count = 0
-#   winners = []
-#   votes.each do |vote|
-#     if counter[vote]
-#       counter[vote] += 1
-#     else
-#       counter[vote] = 1
-#     end
-#     puts "Set #{vote} to #{counter[vote]}"
-#     if counter[vote] > max_count
-#       max_count = counter[vote]
-#       winners.clear
-#       winners << vote
-#       puts "Max count set to #{max_count} based on #{vote}"
-#       p winners
-#     elsif counter[vote] == max_count
-#       winners << vote
-#       p winners
-#     end
-#   end
-#   return winners.sort
-# end
+def determine_winner(votes)
+  counter = {}
+  max_count = 0
+  winners = []
+  votes.each do |vote|
+    if counter[vote]
+      counter[vote] += 1
+    else
+      counter[vote] = 1
+    end
+    puts "Set #{vote} to #{counter[vote]}"
+    if counter[vote] > max_count
+      max_count = counter[vote]
+      winners.clear
+      winners << vote
+      puts "Max count set to #{max_count} based on #{vote}"
+      p winners
+    elsif counter[vote] == max_count
+      winners << vote
+      p winners
+    end
+  end
+  return winners.sort
+end
+
+puts determine_winner(["A", "B", "C", "B", "C", "D", "C", "D"]) == "C"
+
+result =  determine_winner(["A", "B", "C", "B", "C", "D", "C", "D", "D"])
+
+puts result.length == 2
+puts result.include?("C")
+puts result.include?("D")

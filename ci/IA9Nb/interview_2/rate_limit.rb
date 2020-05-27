@@ -60,16 +60,16 @@ class App
 end
 
 app = App.new(rate_limit: 5)
-app.request(customer_id: 1)
-app.request(customer_id: 1)
-app.request(customer_id: 1)
-app.request(customer_id: 1)
-app.request(customer_id: 1)
-app.request(customer_id: 1)
-app.request(customer_id: 1)
-app.request(customer_id: 1)
+app.request(customer_id: 1) # accepted
+app.request(customer_id: 1) # accepted
+app.request(customer_id: 1) # accepted
+app.request(customer_id: 1) # accepted
+app.request(customer_id: 1) # accepted
+app.request(customer_id: 1) # rejected
+app.request(customer_id: 1) # rejected
+app.request(customer_id: 1) # rejected
 sleep(5)
-app.request(customer_id: 1)
+app.request(customer_id: 1) # accepted
 
 
 # credit = 10
