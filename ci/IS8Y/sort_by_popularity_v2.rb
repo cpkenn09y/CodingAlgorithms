@@ -1,5 +1,7 @@
 <<-NOTES
   Going to use the #sort_by comparator
+
+  * Really GREAT ARTICLE on SORTING: https://mixandgo.com/learn/ruby-sort-and-sort-by
 NOTES
 
 class Item
