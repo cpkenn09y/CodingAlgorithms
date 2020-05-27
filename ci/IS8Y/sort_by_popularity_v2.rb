@@ -16,9 +16,6 @@ class Item
 
 end
 
-POPULARITY_WEIGHT = 1000000000
-PRICE_WEIGHT = 0.1
-
 def sort_by_popularity(list)
   items = []
   list.each do |row|
