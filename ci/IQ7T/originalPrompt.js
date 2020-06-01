@@ -1,7 +1,10 @@
+// Make the following code print out “SUCCESS”… the purpose of this challenge is to implement your own version of getElementsByClassName . Your function will be called myGetElementsByClassName.
+//  Your function will accept the a DOM element, and will traverse its DOM tree... returning all child dom elements with the specified className of 'external'
+
 const { JSDOM } = require('jsdom');
 
 // Returns descendent elements that have the given className
-function getElementsByClassName(element, className) {
+function myGetElementsByClassName(element, className) {
   return [];
 }
 
@@ -16,10 +19,9 @@ JSDOM.fromURL("https://developer.mozilla.org/en-US/docs/Web/API/Element").then(d
 
   // your method
 
-  const actualElements = getElementsByClassName(docEl, className);
-  console.log('Actual:', actualElements, actualElements.length);
-
-  if (actualElements.length === specElements.length) {
+  const myFoundElements = myGetElementsByClassName(docEl, className);
+  console.log('Actual:', myFoundElements, myFoundElements.length);
+  if (myFoundElements.length === specElements.length) {
     console.log('SUCCESS');
   } else {
     console.error('NOT YET');
