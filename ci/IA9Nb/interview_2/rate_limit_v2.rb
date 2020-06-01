@@ -21,6 +21,8 @@ class RateLimiter
 
 end
 
+
+
 class App
 
   def initialize(rate_limit: 5)
@@ -32,27 +34,26 @@ class App
     current_time = Time.now
     count_of_request_in_the_last_5_seconds = 0
     if @requests[customer_id]
-      @requests[customer_id].each do |request|
+      @requests[customer_id].each_with_index do |request,i|
         # Determine how many requests from the person have been made in the past 5 seconds
         if request.created_at > (current_time - 5) # NOW is t=100, r=97... t-5=95...
-          puts "Found a request within the last 5 seconds"
+          # puts "Found a request within the last 5 seconds"
           count_of_request_in_the_last_5_seconds += 1
+          if count_of_request_in_the_last_5_seconds >= @rate_limiter.limit
+            puts "REJECTED REQUEST"
+            return false
+          end
         else
           # we could potentially get rid of the request?
         end
       end
-      if count_of_request_in_the_last_5_seconds >= @rate_limiter.limit
-        puts "REJECTED REQUEST"
-        return false
-      end
       if @requests[customer_id]
         @requests[customer_id] << Request.new(customer_id)
-      else
-        @requests[customer_id] = []
       end
     else
       @requests[customer_id] = [Request.new(customer_id)]
     end
+    # p @requests
     puts "ACCEPTED REQUEST"
     return true
   end
