@@ -59,7 +59,6 @@ function hasSpecifiedClassName(domElement, className) {
 
 JSDOM.fromURL("https://developer.mozilla.org/en-US/docs/Web/API/Element").then(dom => {
   const docEl = dom.window.document.documentElement;
-
   const className = 'external';
 
   // reference method
@@ -67,7 +66,6 @@ JSDOM.fromURL("https://developer.mozilla.org/en-US/docs/Web/API/Element").then(d
   console.log('Spec:', specElements, specElements.length);
 
   // your method
-
   const actualElements = getElementsByClassName(docEl, className);
   console.log('Actual:', actualElements, actualElements.length);
 
