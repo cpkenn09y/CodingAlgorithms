@@ -1,3 +1,6 @@
+# Time Complexity: O(n) where n is the length of the nums array
+# Space Complexity: O(1) since the variables are constant and do not grow based on inputs
+
 # @param {Integer[]} nums
 # @return {Integer}
 def max_product(nums)
