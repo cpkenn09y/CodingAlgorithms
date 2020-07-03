@@ -21,12 +21,8 @@ def max_product(nums)
 end
 
 # p max_product([2,3,-2,4]) == 6
-
 # p max_product([-2,0,-1]) == 0
-
 # p max_product([-2,3,-4]) == 24
-
 # p max_product([-2,3,0,-4,-7]) == 28
-
 # p max_product([2,-5,-2,-4,3]) == 24
 
