@@ -1,4 +1,3 @@
-require 'pry'
 require 'set'
 
 def compute(s,coefficient,open_idx,close_idx)
@@ -9,8 +8,6 @@ def is_fully_computed?(s,open_idx,close_idx)
   return s.length - 1 == close_idx && open_idx == 1
 end
 
-# @param {String} s
-# @return {String}
 def decode_string(s)
   stack_of_open_bracket_indexes = []
   i = 0
@@ -22,24 +19,18 @@ def decode_string(s)
       close_idx = i
       coefficient = s[open_idx - 1].to_i
       mid = compute(s,coefficient,open_idx,close_idx)
-      # if is_fully_computed?(s,open_idx,close_idx)
-      #   # do nothing and i will get incremented to out of bounds
-      #   # return mid
-      #   s = mid
-      # else
-        if open_idx > 1
-          front = s[0..open_idx-2]
-        else
-          front = ""
-        end
-        back = s[close_idx+1..s.length-1]
-        s = front.concat(mid).concat(back)
-        i = open_idx - 2 + mid.length # set the idx to be at the edge of the newly created mid. subtract by 1 since i gets incremented after
-      # end
+      if open_idx > 1
+        front = s[0..open_idx-2]
+      else
+        front = ""
+      end
+      back = s[close_idx+1..s.length-1]
+      s = front.concat(mid).concat(back)
+      i = open_idx - 2 + mid.length # set the idx to be at the edge of the newly created mid. subtract by 1 since i gets incremented after
     end
     i += 1
   end
-  return s # maybe
+  return s
 end
 
 module TestSuite
