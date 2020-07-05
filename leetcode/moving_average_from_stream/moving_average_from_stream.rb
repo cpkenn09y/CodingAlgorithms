@@ -13,7 +13,7 @@ class MovingAverage
     end
     @collection.push(val)
     @sum = (@sum + val).to_f
-    @current_average = @sum / @collection.length # TODO: Handle when we are at max size
+    @current_average = @sum / @collection.length
     return @current_average
   end
 
