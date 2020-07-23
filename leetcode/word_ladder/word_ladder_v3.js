@@ -54,7 +54,7 @@ const ladderLength = (beginWord, endWord, wordList) => {
 };
 
 
-/** Algo Pseudocode
+/** Algo Notes
   return 0 if the final word is not present...
   words = { "dot", "dog" } // OPTIMIZATION IDEA...
   set_of_used_words = {"hit", "hot"}
