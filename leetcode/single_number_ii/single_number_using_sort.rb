@@ -1,14 +1,15 @@
 # Time: O(nlog(n) + n)
 # Space: O(1)
+#   - Note: This might actually be O(n) depending on if the chaining of the sort would lead to the creation of a new object...
+#   -  The exclamation mark does indicate that it would modify the Array directly; therefore, it might not use extra space.
 
-# require 'pry'
 # @param {Integer[]} nums
 # @return {Integer}
 def single_number(nums)
   return nums[0] if nums.length == 1
   curr_val = nil
   curr_count = nil
-  nums.sort.each_with_index do |n,i|
+  nums.sort!.each_with_index do |n,i|
     if i == 0
       curr_val,curr_count = n,1
       next
