@@ -8,12 +8,9 @@ function hasSpecifiedClassName(domElement, className) {
 }
 
 function helper(node,className,childrenWithClassName) {
-  if (node == null) {
-    return null
-  }
-  if (hasSpecifiedClassName(node, className)) {
-    childrenWithClassName.push(node)
-  }
+  if (node == null) { return null }
+  if (hasSpecifiedClassName(node, className)) { childrenWithClassName.push(node) }
+
   let children = node.children
   for (let i=0; i < children.length; i++) {
     let node = children[i]
