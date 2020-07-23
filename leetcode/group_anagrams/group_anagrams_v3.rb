@@ -1,5 +1,8 @@
 <<-NOTES
   Strategy: Sort at each row
+
+  Time: O(n + n(mlogm)) where m is the length of the largest string in strs. mlogm for the corresponding sort on 'm' sort.
+  Space: O(n) for the results hash
 NOTES
 
 # @param {String[]} strs
